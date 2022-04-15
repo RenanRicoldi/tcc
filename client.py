@@ -12,7 +12,7 @@ domain = list(dict.fromkeys(rides))
 print('domain defined', len(domain))
 
 for j in range(4):
-  p = (j + 5.99) / 10
+  p = (j + 6.99) / 10
   q = 1 - p
 
   def encode(response):
@@ -42,7 +42,7 @@ for j in range(4):
 
   count = list(zip(domain, non_private_counts))
 
-  write_rides(count, 'count')
+  write_rides(count, 'count_hour')
 
   # More RAM
 
@@ -55,7 +55,7 @@ for j in range(4):
   # responses = [perturb(encode(ride)) for ride in rides]
 
   # gc.collect()
-  # counts = aggregate(responses)
+  # private_counts = aggregate(responses)
 
   # Less RAM
 
@@ -87,4 +87,4 @@ for j in range(4):
 
   print(f"done with epsilon equals to {unary_epsilon(p, q)}")
 
-  write_rides(private_count, 'private_count')
+  write_rides(private_count, 'private_count_hour-'+str(j))

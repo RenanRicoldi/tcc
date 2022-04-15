@@ -14,7 +14,7 @@ with open(f'../spreadsheets/formated_rides.csv', 'w') as file:
 
   for row in csvreader:
     counter += 1
-    if(counter > 1000):
+    if(counter > 10000):
       break
 
     if(row[3] != 'NULL'):
