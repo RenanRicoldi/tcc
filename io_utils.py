@@ -3,14 +3,8 @@ import csv
 import numpy as np
 fieldnames = ['identifier', 'count']
 
-# def format_key(station_id, hour, gender):
-#   return f'{station_id:07d}-{hour:02d}'
-
-def format_key(station_id, hour, gender):
-  return f'{hour:02d}'
-
-def read_rides():
-  file = open('../spreadsheets/formated_rides.csv')
+def read_rides(format_key):
+  file = open('../spreadsheets/formated-data-100k.csv')
   csvreader = csv.reader(file)
 
   next(csvreader)
@@ -18,7 +12,7 @@ def read_rides():
   rides = []
   for row in csvreader:
     rides.append(
-      format_key(row[0],int(row[1]),row[2])
+      format_key(row)
     )
 
   file.close()

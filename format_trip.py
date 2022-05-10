@@ -1,10 +1,10 @@
 import csv
 fieldnames = ['station_id', 'hour', 'gender', 'user_type', 'birth_year']
 
-file = open('../spreadsheets/tripdata.csv')
+file = open('../spreadsheets/original-data.csv')
 csvreader = csv.reader(file)
 
-with open(f'../spreadsheets/formated_rides.csv', 'w') as file:
+with open(f'../spreadsheets/formated-data-100k.csv', 'w') as file:
   writer = csv.writer(file)
   writer.writerow(fieldnames)
 
@@ -14,7 +14,7 @@ with open(f'../spreadsheets/formated_rides.csv', 'w') as file:
 
   for row in csvreader:
     counter += 1
-    if(counter > 10000):
+    if(counter > 100000):
       break
 
     if(row[3] != 'NULL'):
@@ -29,8 +29,13 @@ with open(f'../spreadsheets/formated_rides.csv', 'w') as file:
 
     hour = (row[1].split(' ')[1]).split(':')[0]
 
+    birth_year = row[13]
+
+    if(birth_year == '\\N'):
+      birth_year = 0
+
     writer.writerow(
-      [f'{station_id:07d}', hour, gender, row[12], row[13]]
+      [f'{station_id:07d}', hour, gender, row[12], birth_year]
     )
 
   file.close()
