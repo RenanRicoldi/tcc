@@ -33,9 +33,9 @@ def symmetric_mean_absolute_percentage_error(
 arr_true = np.array([[3, 1, 5]])
 arr_pred = np.array([[3, 6, 1]])
 
-# print(
-#   symmetric_mean_absolute_percentage_error(arr_true, arr_pred, multioutput='uniform_average')
-# )
+print(
+  symmetric_mean_absolute_percentage_error(arr_true, arr_pred, multioutput='raw_values')
+)
 
 # print(
 #   mean_absolute_percentage_error(arr_true, arr_pred, multioutput='uniform_average')

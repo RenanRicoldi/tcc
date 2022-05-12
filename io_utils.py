@@ -4,16 +4,19 @@ import numpy as np
 fieldnames = ['identifier', 'count']
 
 def read_rides(format_key):
-  file = open('../spreadsheets/formated-data-100k.csv')
+  file = open('../spreadsheets/formated-data-41k.csv')
   csvreader = csv.reader(file)
 
   next(csvreader)
 
   rides = []
   for row in csvreader:
-    rides.append(
-      format_key(row)
-    )
+    if(row[2] == 'FEMALE'):
+      rides.append(
+        format_key(row)
+      )
+
+  print(rides.__len__())
 
   file.close()
 
